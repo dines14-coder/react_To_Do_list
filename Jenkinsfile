@@ -18,10 +18,11 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_AUTH_TOKEN')]) {
                     sh '''
-                        cd daily_app
-                        mvn sonar:sonar \
-                          -Dsonar.login=$SONAR_AUTH_TOKEN \
-                          -Dsonar.host.url=$SONAR_URL
+                        sonar-scanner \
+                            -Dsonar.projectKey=react-todo \
+                            -Dsonar.sources=. \
+                            -Dsonar.host.url=$SONAR_URL \
+                            -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
             }

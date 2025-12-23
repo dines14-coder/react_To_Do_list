@@ -1,6 +1,6 @@
 services:
   react-app:
-    image: dinesh14coder/hepl:react-to-do1
+    image: dinesh14coder/hepl:react-to-do6
     container_name: react-to-do
     ports:
       - "3000:3000"

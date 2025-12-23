@@ -50,6 +50,7 @@ pipeline {
             steps {
                 sh 'sed -i -E "s/hepl:.*/${REPLACE}/g" docker-compose.yaml'
                 sh "ls -ltr"
+				sh 'docker-compose -f docker-compose.yaml up -d'
             }
         }
 
@@ -57,7 +58,7 @@ pipeline {
             environment {
                 GIT_REPO_NAME = "react_To_Do_list"
                 GIT_USER_NAME = "dines14-coder"
-		        sh 'docker-compose -f docker-compose.yaml up -d'
+		        
             }
             steps {
                 withCredentials([string(credentialsId: 'hepl', variable: 'GITHUB_TOKEN')]) {

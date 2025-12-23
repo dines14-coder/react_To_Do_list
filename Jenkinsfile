@@ -37,7 +37,7 @@ pipeline {
                 script {
                         sh 'docker --version'
                         sh 'whoami'
-                        sh 'cd SprintTrack-UI && docker build -t ${REACT_IMAGE} .' 
+                        sh 'cd daily_app && docker build -t ${REACT_IMAGE} .' 
                         def dockerImage = docker.image("${REACT_IMAGE}")
                         withDockerRegistry([credentialsId: 'dock-cred', url: 'https://index.docker.io/v1/']) { 
                             dockerImage.push()

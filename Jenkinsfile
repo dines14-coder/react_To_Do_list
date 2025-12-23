@@ -50,6 +50,7 @@ pipeline {
             steps {
                 sh 'sed -i -E "s/hepl:.*/${REPLACE}/g" docker-compose.yaml'
                 sh "ls -ltr"
+				sh 'docker-compose stop'
 				sh 'docker-compose -f docker-compose.yaml up -d'
             }
         }

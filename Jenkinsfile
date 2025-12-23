@@ -48,7 +48,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'sed -i -E "s/hepl:.*/${REPLACE}/g" manifest/docker-compose.yaml'
+                sh 'sed -i -E "s/hepl:.*/${REPLACE}/g" docker-compose.yaml'
                 sh "ls -ltr"
             }
         }
@@ -57,7 +57,7 @@ pipeline {
             environment {
                 GIT_REPO_NAME = "react_To_Do_list"
                 GIT_USER_NAME = "dines14-coder"
-		        sh 'docker-compose -f manifest/docker-compose.yaml up -d'
+		        sh 'docker-compose -f docker-compose.yaml up -d'
             }
             steps {
                 withCredentials([string(credentialsId: 'hepl', variable: 'GITHUB_TOKEN')]) {
